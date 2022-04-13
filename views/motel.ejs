@@ -1,0 +1,171 @@
+<main class="page catalog-page">
+  <section class="clean-block clean-catalog dark">
+    <div class="s009" id="timtheotukhoa">
+      <form action="/motel/1" method="get">
+        <div class="inner-form">
+          <div class="advance-search">
+            <span class="desc">Tìm theo từ khóa</span>
+            <div class="group-btn">
+              <input
+                id="keyword"
+                name="keyword"
+                type="text"
+                class="form-control validate"
+                placeholder="Nhập từ khóa tìm kiếm"
+              />
+
+              <button class="btn-search" style="margin-top: 20px; color: white; background-color:  seagreen; width: 100px; height: 40px; border: none;">Tìm</button>
+            </div>
+            <% if (keyword) { %>
+                <p style="padding-top: 10px">
+                  Kết quả tìm kiếm cho từ khóa: <%= keyword%></p>
+                <% } %>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filters-content">
+              <div class="row grid">
+                <% for(var i = 0; i < products.length; i++) { %>
+                  <% if (products[i].status == 1) {%>
+                <div class="col-lg-4 col-md-4 all des">
+                  <div
+                    class="product-item"
+                    style="
+                      margin: 5px;
+                      border-radius: 15px;
+                      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+                    "
+                  >
+                    <div>
+                      <img
+                        style="
+                          width: 100%;
+                          height: auto;
+                          border-radius: 15px;
+                          padding: 5px;
+                        "
+                        src="<%= products[i].uploadImage %>"
+                        alt=""
+                      />
+                    </div>
+
+                    <div class="down-content" style="padding: 5px">
+                        <a href="/viewroom/<%= products[i]._id %>" style="text-decoration: none"><h4><%= products[i].title %></h4></a>
+
+                      <p style="color: crimson; font-size: 20px">
+                        Giá: <%= products[i].cost %> vnđ
+                      </p>
+                      <p style="font-size: 18px">Khu vực: <%= products[i].wards %></p>
+                      <p><%= products[i].description %></p>
+                    </div>
+                  </div>
+                </div>
+                <% } } %>
+              </div>
+               <!-- pagination -->
+  <div class="row">
+    <!-- hiển thị phân trang nếu có trang -->
+    <% if(pages > 0) { %>
+    <nav class="mx-auto">
+      <ul class="pagination" style="margin-top: 2rem;">
+      
+        <!-- FIRST ITEM -->  
+        <% if(current == 1) { %> 
+       <!-- Nếu thông số http://localhost:3333/news/1/ là 1 thì First sẽ bị disabled -->
+            <li class="page-item disabled">
+              <a class="page-link" href="/">Trang đầu</a>
+            </li>
+        <% } else { %>
+         <!-- Nếu thông số http://localhost:3333/news/2/ từ 2 trở lên thì First sẽ bỏ disabled -->
+            <li class="page-item">
+              <a class="page-link" href="/motel/1">Trang đầu</a>
+            </li>
+        <% } %>
+        
+        <!-- ITEMS  -->
+        <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %> 
+   <!-- Toán tử điều kiện 3 ngôi syntax: < điều_kiện ? giá_trị_1 : giá_trị_2 > -->
+  <!-- Nếu điều_kiện trả về true, toán tử có giá trị giá_trị_1. Ngược lại toán tử có giá trị giá_trị_2. -->
+        <% if(i !== 1) { %>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+        <% } %>
+        <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
+         <!-- Sử dụng vòng lặp để lặp qua từng trang và tăng số trang  -->
+         <!-- Trong vòng lặp for có ba biểu thức tùy chọn nên chỉ cần các bạn tách mỗi biểu thức bằng dấu `;` là oke rồi -->
+          <% if(i == current) { %>
+            <li class="page-item active">
+              <a class="page-link" href="/motel/<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+        <% } else { %>
+            <li class="page-item">
+              <a class="page-link" href="/motel/<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+        <% } %>
+        <% if (i == Number(current) + 2 && i < pages) { %>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+        <% } %>
+        <% } %>
+        
+        <!-- LAST ITEM -->
+        <% if(current == pages) { %> 
+        <!-- Nếu số current( chỉ số phân trang ) là 6 và tổng số page là 6 thì Last bị disabled -->
+            <li class="page-item disabled">
+              <a class="page-link" href="#">
+                Trang cuối
+              </a>
+            </li>
+        <% } else { %>
+            <!-- Ngược lại, thì Last là trang cuối cùng pages ở đây là 6 đồng nghĩa với Last là trang số 6 -->
+            <li class="page-item">
+              <a class="page-link" href="/motel/<%= pages %>">
+                Trang cuối
+              </a>
+            </li>
+        <% } %>
+      </ul>
+    </nav>
+    <% } %>
+  </div>
+            </div>
+          </div>
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/extention/choices.js"></script>
+    <script>
+      const customSelects = document.querySelectorAll("select");
+      const deleteBtn = document.getElementById("delete");
+      const choices = new Choices("select", {
+        searchEnabled: false,
+        itemSelectText: "",
+        removeItemButton: true,
+      });
+      deleteBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const deleteAll = document.querySelectorAll(".choices__button");
+        for (let i = 0; i < deleteAll.length; i++) {
+          deleteAll[i].click();
+        }
+      });
+    </script>
+    <script src="/js/motel/custom.js"></script>
+    <script src="/js/motel/owl.js"></script>
+    <script src="/js/motel/slick.js"></script>
+    <script src="/js/motel/isotope.js"></script>
+    <script src="/js/motel/accordions.js"></script>
+  </section>
+</main>

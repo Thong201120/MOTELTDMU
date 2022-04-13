@@ -1,0 +1,122 @@
+<main class="page viewprofile-page">
+    <section class="clean-block">
+      <div class="container">
+        <form action="/viewprofile" enctype="multipart/form-data" method="post">
+        <div class="wrapper bg-white mt-sm-5">
+          <h4 class="pb-4 border-bottom">Tài khoản</h4>
+          <div class="d-flex align-items-start py-3 border-bottom">
+            <img
+              border-radius="20%"
+              width="40%"
+              height="40%"
+              src="<%= userPost.avatar %>"
+              class="img"
+              alt=""
+            />
+            <div class="pl-sm-4 pl-2" id="img-section">
+              <!-- <b>Tải ảnh lên</b>
+              <p>Kích thước dưới 5MB thui nhen!</p>
+              <input type="file"  class="form-control-file" name="Image" > -->
+              <!-- <label for="file" style="color: white; height: 40px; width: 100px; background-color: steelblue; margin: auto; justify-content: center; align-items: center;">
+                  Tải ảnh lên
+              </label> -->
+            </div>
+          </div>
+          <div class="py-2">
+            <div class="row py-2">
+              <div class="col-md-6">
+                <label for="firstname">Tên</label>
+                <input
+                  type="text"
+                  readonly="readonly"
+                  class="bg-light form-control"
+                  placeholder="Họ tên"
+                  style="color: black;"
+                  id="fullname"
+                  name="fullname"
+                  value="<%= userPost.name %>"
+                />
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3">
+                <label for="lastname">Địa chỉ</label>
+                <input
+                  type="text"
+                  style="color: black;"
+                  class="bg-light form-control"
+                  placeholder="Thêm địa chỉ"
+                  id="address"
+                  readonly="readonly"
+                  name="address"
+                  value="<%= userPost.address %>"
+                  
+                />
+              </div>
+            </div>
+            <div class="row py-2">
+              <div class="col-md-6">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  style="color: black;"
+                  class="bg-light form-control"
+                  placeholder="Địa chỉ mail"
+                  id="email"
+                  readonly="readonly"
+                  name="email"
+                  value="<%= userPost.email %>"
+                />
+              </div>
+              <div class="col-md-6 pt-md-0 pt-3">
+                <label for="phone">Số điện thoại</label>
+                <input
+                  type="tel"
+                  style="color: black;"
+                  class="bg-light form-control"
+                  placeholder="001"
+                  id="phone"
+                  readonly="readonly"
+                  name="phone"
+                  value=<%= userPost.phoneNumber %>
+                />
+              </div>
+            </div>
+  
+            <div class="row py-2">
+              <div class="col-md-6">
+                <label for="email">Quyền truy cập</label>
+                <input
+                  type="text"
+                  style="color: black;"
+                  readonly="readonly"
+                  readonly="readonly"
+                  class="bg-light form-control"
+                  placeholder="Quyền truy cập"
+                  id="status"
+                  name="status"
+                  <% if (userPost.permission == 0) { %> 
+                    value="Sinh viên"
+                  <% } else if (userPost.permission == 1) { %> 
+                    value="Chủ trọ" 
+                  <% } else if (userPost.permission == 2) { %>
+                    value="Admin" 
+                  <% } else { %>
+                    value="Siêu người dùng" 
+                  <% } %>   
+                />
+              </div> 
+              
+            </div>
+              
+            </div>
+          </div>
+        </form>
+        </div>
+        <script
+          type="text/javascript"
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+        ></script>
+        <script type="text/javascript"></script>
+      </div>
+    </section>
+  </main>
+  

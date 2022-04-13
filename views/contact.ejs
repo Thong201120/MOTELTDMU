@@ -1,0 +1,111 @@
+<main class="page contact-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="wrapper">
+                            <div class="row mb-5">
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-map-marker"></span>
+                                </div>
+                                <div class="text">
+                                <p><span>Địa chỉ:</span> 43, Trần Văn Ơn, Phú Hòa, Thủ Dầu Một, Bình Dương</p>
+                              </div>
+                          </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-phone"></span>
+                                </div>
+                                <div class="text">
+                                <p><span>Điện thoại:</span> <a href="tel://1234567920"></a> <br>0907944628</a></p>
+                              </div>
+                          </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-paper-plane"></span>
+                                </div>
+                                <div class="text">
+                                <p><span>Email:</span> <a href="mailto:info@yoursite.com">doanchuyennganh02@gmail.com</a></p>
+                              </div>
+                          </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-facebook"></span>
+                                </div>
+                                <div class="text">
+                               <span>Facebook</span>  <a href="https://www.facebook.com/thongnguyenlvl/">https://www.facebook.com/thongnguyenlvl/</a></p>
+                              </div>
+                          </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-md-7">
+                                    <div class="contact-wrap w-100 p-md-5 p-4">
+                                        <h3 class="mb-4">Phản Hồi</h3>
+                                        <div id="form-message-warning" class="mb-4"></div> 
+                                  <div id="form-message-success" class="mb-4">
+                                Phản hồi của bạn đã được gửi đi, Chúng tôi sẽ phản hồi đến bạn sớm !
+                                  </div>
+                                        <form action="/contact" method="post" >
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <% if (messages) { %>
+                                                        <p style="color: red; font-size: 15px;"> <%= messages %> </p>
+                                                    <% } %> 
+                                                    <% if (success) { %>
+                                                        <p style="color: green; font-size: 15px;"> <%= success %> </p>
+                                                    <% } %> 
+                                                    <div class="form-group">
+                                                        <label class="label" style="font-size: 16px;" for="subject">Tiêu đề</label>
+                                                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Bạn muốn hồi về vấn đề gì?">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label"style="font-size: 16px;"  for="#">Nội dung</label>
+                                                        <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Mô tả chi tiết tại đây"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-login" type="submit">Gửi phản hồi</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 d-flex align-items-stretch">
+                                    <div class="info-wrap w-100 p-5 img" style="background-image: url(img/motelroom/phong12.jpg);">
+                          </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <script src="js/jquery.min.js"></script>
+      <script src="js/popper.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/jquery.validate.min.js"></script>
+      <script src="js/main.js"></script>
+    </div>
+</section>
+</main>
+

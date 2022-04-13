@@ -1,0 +1,43 @@
+<!-- bootstrap/css/bootstrap.min.css -->
+<div class="option" style="position: relative; margin-top: 60px;">
+    <div class="option-btn">
+        <% if (page_name == 'qlbaidang') { %> 
+            <button class="btn-itemed"><a class="link" href ="/admin/qlbaidang/1">Bài đăng</a></button>    
+        <% } else { %>  
+            <button class="btn-item"><a class="link" href ="/admin/qlbaidang/1">Bài đăng</a></button>    
+        <% } %>
+
+        <% if (page_name == 'qlthanhvien') { %> 
+            <button class="btn-itemed"><a class="link" href ="/admin/qlthanhvien/1">Thành viên</a></button>
+        <% } else { %>  
+            <button class="btn-item"><a class="link" href ="/admin/qlthanhvien/1">Thành viên</a></button>
+        <% } %>
+
+        <% if (page_name == 'xemphanhoi') { %> 
+            <button class="btn-itemed"><a class="link" href ="/admin/xemphanhoi/1">Phản hồi</a></button>
+        <% } else { %>  
+            <button class="btn-item"><a class="link" href ="/admin/xemphanhoi/1">Phản hồi</a></button>
+        <% } %>
+        
+        <% if (page_name == 'reviewphanhoi') { %> 
+            <button class="btn-itemed"><a class="link" href ="/admin/reviewphanhoi/1">Reply</a></button>
+        <% } else { %>  
+            <button class="btn-item"><a class="link" href ="/admin/reviewphanhoi/1">Reply</a></button>
+        <% } %>
+        
+        <% if (user.permission == 3) { %>
+            <% if (page_name == 'addmember') { %> 
+                <button class="btn-itemed"><a class="link" href ="/admin/addmember">Thêm TV</a></button>
+            <% } else { %>  
+                <button class="btn-item"><a class="link" href ="/admin/addmember">Thêm TV</a></button>
+            <% } %>
+        
+            <% if (page_name == 'thongke') { %> 
+                <button class="btn-itemed"><a class="link" href ="/admin/thongke/1">Doanh thu</a></button>
+            <% } else { %>  
+                <button class="btn-item"><a class="link" href ="/admin/thongke/1">Doanh thu</a></button>
+            <% } %>
+        
+        <% } %>
+    </div>
+</div>

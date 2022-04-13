@@ -1,0 +1,153 @@
+<main class="page login-page">
+    <section class="clean-block">
+      <div class="container">
+        <div class="wrapper bg-white mt-sm-5">
+          <h4 class="pb-4 border-bottom">Thông tin VIP</h4>
+          <div class="d-flex align-items-start py-3 border-bottom">
+            <img
+              border-radius="20%"
+              height=auto
+              src="<%= user.avatar %>"
+              class="img"
+              alt=""
+            />
+            <% 
+            var endtime = listvip[listvip.length -1].endtime;
+            var d = new Date();
+        
+            var millisBetween =   endtime.getTime() - d.getTime();
+            var days = millisBetween / (1000 * 3600 * 24);
+        
+            var count = Math.round(days);%>
+            <div class="pl-sm-4 pl-2" id="img-section">
+              <p style="font-size: 35px; color:crimson; margin-bottom: 0px;">VIP</p>
+              <p style="font-size: 20px; color:rgb(0, 0, 0); margin-bottom: 0px;"><%= name %></p>
+              <% if (count <= 0 ) { %> 
+                <p style="font-size: 20px; color:rgb(250, 0, 0); margin-bottom: 0px;">Tài khoản vip đã hết hạn <%= Math.abs(count) %> ngày</p>
+              <% } else if (count > 0 && count <= 5) { %>
+                <p style="font-size: 20px; color:rgb(250, 0, 0); margin-bottom: 0px;">Còn <%= count %> ngày hiệu lực</p>
+              <% } else {%>
+              <p style="font-size: 20px; color:rgb(0, 0, 0); margin-bottom: 0px;">Còn <%= count %> ngày hiệu lực</p>
+                <% } %>   
+              
+            </div>
+
+          </div>
+          <p style="font-size: 20px; color:rgb(17, 107, 167); margin-bottom: 0px;">Số tháng duy trì tài khoản: <%= user.money/50000 %></p>
+          
+          <p style="font-size: 20px; color:rgb(50, 169, 224); margin-bottom: 0px;">Số bài đã đăng: <%= user.countPost %></p>
+            </div>
+          </div>
+        </div>
+        <script
+          type="text/javascript"
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"
+        ></script>
+        <script type="text/javascript"></script>
+      </div>
+      <div class="container-center " style="width: 72%; margin: 0 auto;">
+        <div class="block-heading">
+          <h2 class="text-info">Lịch sử đăng ký VIP</h2>
+      </div>
+        <!-- pagination -->
+        <div class="row" style="align-content: center;">
+            <!-- hiển thị phân trang nếu có trang -->
+            <% if(pages > 0) { %>
+            <nav class="mx-auto">
+              <ul class="pagination" style="margin-top: 2rem;">
+              
+                <!-- FIRST ITEM -->  
+                <% if(current == 1) { %> 
+               <!-- Nếu thông số http://localhost:3333/news/1/ là 1 thì First sẽ bị disabled -->
+                    <li class="page-item disabled">
+                      <a class="page-link" href="/">Trang đầu</a>
+                    </li>
+                <% } else { %>
+                 <!-- Nếu thông số http://localhost:3333/news/2/ từ 2 trở lên thì First sẽ bỏ disabled -->
+                    <li class="page-item">
+                      <a class="page-link" href="/vipinfo/1">Trang đầu</a>
+                    </li>
+                <% } %>
+                
+                <!-- ITEMS  -->
+                <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %> 
+           <!-- Toán tử điều kiện 3 ngôi syntax: < điều_kiện ? giá_trị_1 : giá_trị_2 > -->
+          <!-- Nếu điều_kiện trả về true, toán tử có giá trị giá_trị_1. Ngược lại toán tử có giá trị giá_trị_2. -->
+                <% if(i !== 1) { %>
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">...</a>
+                    </li>
+                <% } %>
+                <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
+                 <!-- Sử dụng vòng lặp để lặp qua từng trang và tăng số trang  -->
+                 <!-- Trong vòng lặp for có ba biểu thức tùy chọn nên chỉ cần các bạn tách mỗi biểu thức bằng dấu `;` là oke rồi -->
+                  <% if(i == current) { %>
+                    <li class="page-item active">
+                      <a class="page-link" href="/vipinfo/<%= i %>">
+                        <%= i %>
+                      </a>
+                    </li>
+                <% } else { %>
+                    <li class="page-item">
+                      <a class="page-link" href="/vipinfo/<%= i %>">
+                        <%= i %>
+                      </a>
+                    </li>
+                <% } %>
+                <% if (i == Number(current) + 2 && i < pages) { %>
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">...</a>
+                    </li>
+                <% } %>
+                <% } %>
+                
+                <!-- LAST ITEM -->
+                <% if(current == pages) { %> 
+                <!-- Nếu số current( chỉ số phân trang ) là 6 và tổng số page là 6 thì Last bị disabled -->
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">
+                        Trang cuối
+                      </a>
+                    </li>
+                <% } else { %>
+                    <!-- Ngược lại, thì Last là trang cuối cùng pages ở đây là 6 đồng nghĩa với Last là trang số 6 -->
+                    <li class="page-item">
+                      <a class="page-link" href="/vipinfo/<%= pages %>">
+                        Trang cuối
+                      </a>
+                    </li>
+                <% } %>
+              </ul>
+            </nav>
+            <% } %>
+          </div>
+                        <div class="tm-product-table-container ">
+                            <table class="table table-hover tm-table-small tm-product-table ">
+                                <thead>
+                                    <tr>
+        
+                                        
+                                        <th scope="col" class="tdtentv header">STT</th>
+                                        <th scope="col" class="tdtentv header">Ngày bắt đầu</th>
+                                        <th scope="col" class="tdtentv header">Ngày kết thúc</th>
+                                    </tr>
+                                </thead >
+                                <tbody>
+                                    <% for(var i = 0; i < listvip.length; i++) { %> 
+                                        <tr>         
+                                                
+                                                <td class="tdtentv"><%= i %></td>
+                                                <td class="tdphanhoi"> <%= listvip[i].starttime %></td>
+                                                <td class="tdphanhoi"> <%= listvip[i].endtime %></td>
+                                        </tr>
+                                    <% } %>
+        
+                                </tbody>
+                            </table>
+        
+        
+                        </div>
+                    </div>
+    </section>
+  </main>
+  

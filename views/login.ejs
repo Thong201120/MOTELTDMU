@@ -1,0 +1,33 @@
+<main class="page login-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Đăng nhập</h2>
+            </div>
+            <form action="/login" method="post">
+                <div class="mb-3">
+                    <% if (messages) { %>
+                        <p style="color: red; font-size: 15px;"> <%= messages %> </p>
+                    <% } %> 
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control item" type="email" id="email" name="email"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Mật khẩu</label><input class="form-control" type="password" name="password"
+                        id="password" />
+                </div>
+                <div class="mb-3">
+                  
+                </div>
+
+                <div class="mb-3">
+                        <a href="reset-password" style="text-decoration: none;" >Quên mật khẩu?</a>
+                </div>
+
+                <div>
+                    <button class="btn btn-login" type="submit">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,213 @@
+<main class="page viewroom-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            
+<div class="container tm-mt-big tm-mb-big">
+    
+    <div class="row">
+    <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <div class="row">
+            <div class="col-12">
+            <h2 class="tm-block-title d-inline-block">Chi tiết bài đăng</h2>
+            </div>
+        </div>
+        <div class="row tm-edit-product-row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+            <form method="post" enctype="multipart/form-data" class="tm-edit-product-form">
+                <div class="form-group mb-3">
+                <label
+                    for="name"
+                    >Tiêu đề
+                </label>
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    class="form-control validate"
+                    readonly="readonly"
+                    required
+                    value="<%- listPostID.title %>"
+                />
+                </div>
+                <div class="form-group mb-3">
+                <label
+                    for="description"
+                    >Mô tả</label
+                >
+                <textarea
+                    class="form-control validate"
+                    rows="3"
+                    id="description"
+                    name="description"
+                    readonly="readonly"
+                    required><%- listPostID.description %></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label
+                        for="name"
+                        >Địa chỉ (số, đường phố)
+                    </label>
+                    <input
+                        id="streetName"
+                        name="streetName"
+                        type="text"
+                        class="form-control validate"
+                        readonly="readonly"
+                        required
+                        value="<%- listPostID.streetName %>"
+                    />
+                    </div>
+                <div class="form-group mb-3">
+                <label
+                    for="category"
+                    >Khu vực</label
+                >
+                <input
+                    class="form-control validate"
+                    id="wards"
+                    name="wards"
+                    readonly="readonly"
+                    value="<%- listPostID.cost %>"
+                >
+                </div>
+                <div class="form-group mb-3">
+                    <label
+                        for="name"
+                        >Giá phòng (vnđ)
+                    </label>
+                    <input
+                        id="cost"
+                        name="cost"
+                        type="text"
+                        readonly="readonly"
+                        class="form-control validate"
+                        value="<%- listPostID.cost %>"
+                        required
+                    />
+                    </div>
+                <div class="row">
+                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                        <label
+                        for="expire_date"
+                        >Tiền điện (vnđ)
+                        </label>
+                        <input
+                        id="electric"
+                        name="electric"
+                        type="text"
+                        readonly="readonly"
+                        value="<%- listPostID.electric %>"
+                        class="form-control validate"
+                        data-large-mode="true"
+                        />
+                    </div>
+                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                        <label
+                        for="stock"
+                        >Tiền nước (vnđ)
+                        </label>
+                        <input
+                        id="water"
+                        name="water"
+                        type="text"
+                        readonly="readonly"
+                        value="<%- listPostID.water %>"
+                        class="form-control validate"
+                        required
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label
+                            for="category"
+                            >Loại phòng</label
+                        >
+                        <input
+                            class="form-control validate"
+                            id="roomType"
+                            name="roomType"
+                            readonly="readonly"
+                            value="<%- listPostID.roomType %>"
+                        >
+                        </div>
+                        <div class="form-group mb-3">
+                            <label
+                                for="description"
+                                >Ghi chú (tiện ích)</label
+                            >
+                            <textarea
+                                class="form-control validate"
+                                rows="3"
+                                id="ultilities"
+                                name="ultilities"
+                                readonly="readonly"
+                                required
+                            ><%- listPostID.ultilities %></textarea>
+                            </div>
+                </div>
+                <div class="col-12">
+                    <h3 style="padding-top: 20px;">Thông tin liên hệ</h3>
+                    <h6 style="padding-top: 20px;">Tên chủ trọ: <%= userPost.name %></h6>
+                    <h6 style="padding-top: 20px;">Số điện thoại: <%= userPost.phoneNumber %></h6>
+                    <h6 style="padding-top: 20px;">Email: <%= userPost.email %></h6>
+                    <button style="margin-top: 20px;" class="btn btn-primary btn-block text-uppercase"><a href="/admin/viewprofile/<%= listPostID.userid %>" style="text-decoration: none; color: white;">Xem profile</a></button>
+            <!-- <button type="submit" class="btn btn-primary btn-block text-uppercase">Cập nhật</button> -->
+            </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                
+            <div class="tm-product-img-dummy mx-auto">
+                <% if (listPostID.uploadImage != 'null') { %> 
+                    <div class="product-item" style="padding: 5px;  border-radius: 15px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                        <div >
+                            <img class="card-img-top w-100 d-block" src="<%- listPostID.uploadImage %>" class="img" alt="" />
+                        </div>
+                    </div>
+                <% } if (listPostID.Image1 != 'null') { %> 
+                    <div class="product-item" style="padding: 5px;  border-radius: 15px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                        <div >
+                            <img class="card-img-top w-100 d-block" src="<%- listPostID.Image1 %>" class="img" alt="" />
+                        </div>
+                    </div>
+                <% } if (listPostID.Image2 != 'null') { %> 
+                    <div class="product-item" style="padding: 5px;  border-radius: 15px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                        <div >
+                            <img class="card-img-top w-100 d-block" src="<%- listPostID.Image2 %>" class="img" alt="" />
+                        </div>
+                    </div>
+                <% } if (listPostID.Image3 != 'null') { %> 
+                    <div class="product-item" style="padding: 5px;  border-radius: 15px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                        <div >
+                            <img class="card-img-top w-100 d-block" src="<%- listPostID.Image3 %>" class="img" alt="" />
+                        </div>
+                    </div>
+                <% } if (listPostID.Image4 != 'null') { %> 
+                    <div class="product-item" style="padding: 5px;  border-radius: 15px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                        <div >
+                            <img class="card-img-top w-100 d-block" src="<%- listPostID.Image4 %>" class="img" alt="" />
+                        </div>
+                    </div>
+                <% } %>
+         
+            </div>
+            <div class="custom-file mt-3 mb-3">
+                <div class="pl-sm-4 pl-2" id="img-section">
+                    <!-- <b>Tải ảnh lên</b>
+                    <p>Kích thước dưới 5MB thui nhen!</p>
+                    <input type="file"  class="form-control-file" name="Image" > -->
+                    <!-- <label for="file" style="color: white; height: 40px; width: 100px; background-color: steelblue; margin: auto; justify-content: center; align-items: center;">
+                        Tải ảnh lên
+                    </label> -->
+                  </div>
+            </div>
+            </div>
+            
+        </form>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</section>
+</main>

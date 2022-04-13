@@ -1,0 +1,121 @@
+<main class="page bookingroom-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+
+            <div class="container tm-mt-big tm-mb-big">
+
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="tm-block-title d-inline-block">Đăng ký tìm phòng</h2>
+                                </div>
+                            </div>
+                            <div class="row tm-edit-product-row">
+                                <div class="col-xl-6 col-lg-6 col-md-12">
+                                    <form method="post" class="tm-edit-product-form">
+                                        <div class="form-group mb-3">
+                                            <% if (success) { %>
+                                                <p style="color: green; font-size: 15px;"> <%= success %> </p>
+                                            <% } %> 
+                                            <label
+                                                for="wards"
+                                            >Chọn khu vực mong muốn
+                                            </label>
+                                            <select
+                                                class="custom-select tm-select-accounts"
+                                                id="wards"
+                                                name="wards"
+                                            >
+                                                <option selected>Lựa chọn phường</option>
+                                                <option value="Phú Hòa">Phú Hòa</option>
+                                                <option value="Phú Lợi">Phú Lợi</option>
+                                                <option value="Phú Thọ">Phú Thọ</option>
+                                                <option value="Phú Mỹ">Phú Mỹ</option>
+                                                <option value="Phú Cường">Phú Cường</option>
+                                                <option value="Hiệp Thành">Hiệp Thành</option>
+                                                <option value="Tương Bình Hiệp">Tương Bình Hiệp</option>
+                                                <option value="Phú Tân">Phú Tân</option>
+                                                <option value="Hòa Phú">Hòa Phú</option>
+                                                <option value="Hiệp An">Hiệp An</option>
+                                                <option value="Chánh Mỹ">Chánh Mỹ</option>
+                                                <option value="Tân An">Tân An</option>
+                                                <option value="Định Hòa">Định Hòa</option>
+                                                <option value="Chánh Nghĩa">Chánh Nghĩa</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label
+                                                for="description"
+                                            >Nhập mức giá mong muốn</label
+                                            >
+                                            <input
+                                                id="cost"
+                                                name="cost"
+                                                type="text"
+                                                class="form-control validate"
+                                                required
+                                            />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label
+                                                for="name"
+                                            >Chọn loại phòng
+                                            </label>
+                                            <select
+                                                class="custom-select tm-select-accounts"
+                                                id="roomtype"
+                                                name="roomType"
+                                            >
+                                                <option selected>Chọn loại phòng</option>
+                                                <option value="Có gác">Có gác</option>
+                                                <option value="Không có gác">Không có gác</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label
+                                                for="description"
+                                                >Ghi chú thêm</label
+                                            >
+                                            <textarea
+                                                class="form-control validate"
+                                                rows="3"
+                                                id="description"
+                                                name="description"></textarea>
+                                            </div>
+                                        <button style="margin-top: 20px; background-color: rgb(6, 175, 91); border: none;" class="btn btn-primary btn-block text-uppercase" type="submit">Gửi thông tin</button>
+                                    </form>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                                    <a class="tm-product-img-dummy mx-auto">
+                                        <img
+                                            class="card-img-top w-100 d-block"
+                                            src="/img/motelroom/phong19.jpg"
+                                            class="img"
+                                            alt=""
+                                        />
+    
+                                        <a href="/#phong"><button style="margin-top: 20px;" class="btn btn-primary btn-block text-uppercase">Xem danh sách phòng</button></a>
+                                        <a href="/motel/#timtheotukhoa"><button style="margin-top: 20px;" class="btn btn-primary btn-block text-uppercase">Tìm kiếm</button></a>
+                                    </div>
+                                    <div class="custom-file mt-3 mb-3">
+                                        <div class="pl-sm-4 pl-2" id="img-section">
+                                            <!-- <b>Tải ảnh lên</b>
+                                            <p>Kích thước dưới 5MB thui nhen!</p>
+                                            <input type="file"  class="form-control-file" name="Image" > -->
+                                            <!-- <label for="file" style="color: white; height: 40px; width: 100px; background-color: steelblue; margin: auto; justify-content: center; align-items: center;">
+                                                Tải ảnh lên
+                                            </label> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>

@@ -1,0 +1,159 @@
+<main class="page landing-page">
+  <section class="clean-block clean-hero" style="background-image:url(&quot;img/tech/index2.jpg&quot;);color:rgba(54, 132, 184, 0.301);">
+    <div class="text">
+      <h2 >Tìm kiếm phòng trọ TDMU</h2>
+      <p >Tại đây, bạn có thể tìm cho mình một căn phòng thật lí tưởng phù hợp với nhu cầu và sở thích của bạn.</p>
+      <a href="/motel"  class="btn btn-outline-light btn-lg">
+        Bắt đầu
+    </a>
+    </div>
+  </section>
+  <section class="clean-block clean-info dark">
+    <div class="container">
+      <div class="block-heading" id="phong">
+        <h2 class="text-info">Phòng trọ</h2>
+        <p>Danh sách các phòng trọ trong khu vực Thủ Dầu Một</p>
+      </div>
+      <div class="products">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="filters-content">
+                <div class="row grid">
+   <% listroom.forEach(function(room) { %>
+                    <div class="col-lg-4 col-md-4 all des">
+                     
+                    <div class="product-item" style="margin: 5px;  border-radius: 15px; box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                      <div >
+                        <img style="width: 100%; height: auto; border-radius: 15px; padding: 5px;" src="<%= room.uploadImage %>" alt=""
+                      /></div>
+  
+                      <div class="down-content" style="padding: 5px;">
+                        <a href="/viewroom/<%= room._id %>" style="text-decoration: none"><h4><%= room.title %></h4></a>
+                        <p style="color: crimson; font-size: 20px;">Giá: <%= room.cost %> vnđ</p>
+                        <p style=" font-size: 18px;">Khu vực: <%= room.wards %></p>
+                        <p>
+                          <%= room.description %>
+                        </p>
+  
+                      </div>
+                    </div>
+                        
+                  </div>
+  <% }); %>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12"></div>
+          </div>
+        </div>
+      </div>
+      <script src="js/extention/choices.js"></script>
+      <script>
+        const customSelects = document.querySelectorAll("select");
+        const deleteBtn = document.getElementById("delete");
+        const choices = new Choices("select", {
+          searchEnabled: false,
+          itemSelectText: "",
+          removeItemButton: true,
+        });
+        deleteBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const deleteAll = document.querySelectorAll(".choices__button");
+          for (let i = 0; i < deleteAll.length; i++) {
+            deleteAll[i].click();
+          }
+        });
+      </script>
+      <script src="/js/motel/custom.js"></script>
+      <script src="/js/motel/owl.js"></script>
+      <script src="/js/motel/slick.js"></script>
+      <script src="/js/motel/isotope.js"></script>
+      <script src="/js/motel/accordions.js"></script>
+    </div>
+  </section>
+  <section class="clean-block features">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">Liên hệ</h2>
+        
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+              <div class="wrapper">
+                  <div class="row mb-5">
+                      <div class="col-md-3">
+                          <div class="dbox w-100 text-center">
+                      <div class="icon d-flex align-items-center justify-content-center">
+                          <span style="font-size: 40px;" class="fa fa-map-marker"></span>
+                      </div>
+                      <div class="text">
+                      <p style="font-size: 20px;"><span>Địa chỉ:</span> 43, Trần Văn Ơn, Phú Hòa, Thủ Dầu Một, Bình Dương</p>
+                    </div>
+                </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="dbox w-100 text-center">
+                      <div class="icon d-flex align-items-center justify-content-center">
+                          <span style="font-size: 40px;" class="fa fa-phone"></span>
+                      </div>
+                      <div class="text">
+                      <p style="font-size: 20px;"><span>Điện thoại:</span> <a href="tel://1234567920"></a> <br>0907944628</a></p>
+                    </div>
+                </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="dbox w-100 text-center">
+                      <div class="icon d-flex align-items-center justify-content-center">
+                          <span style="font-size: 40px;" class="fa fa-paper-plane"></span>
+                      </div>
+                      <div class="text">
+                      <p style="font-size: 20px;"><span>Email:</span> <a href=doanchuyennganh02@gmail.com">doanchuyennganh02@</a></p>
+                    </div>
+                </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="dbox w-100 text-center">
+                      <div class="icon d-flex align-items-center justify-content-center">
+                          <span style="font-size: 40px;" class="fa fa-facebook"></span>
+                      </div>
+                      <div class="text">
+                     <p style="font-size: 20px;"><span>Facebook</span>  <a href="https://www.facebook.com/thongnguyenlvl/">fb.com/thongnguyenlvl/</a></p>
+                    </p></div>
+                </div>
+                      </div>
+                  </div>
+      </div>
+    </div>
+  </section>
+  <section class="clean-block slider dark">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">Xem dạng thẻ</h2>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
+      </div>
+      <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
+        <div class="carousel-inner">
+          <div class="carousel-item active"><img class="w-100 d-block" src="img/motelroom/phong10.jpg" alt="Slide Image"></div>
+          <div class="carousel-item"><img class="w-100 d-block" src="img/motelroom/phong2.jpg" alt="Slide Image"></div>
+          <div class="carousel-item"><img class="w-100 d-block" src="img/motelroom/phong3.jpg" alt="Slide Image"></div>
+        </div>
+        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+          <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="clean-block slider dark">
+    <div class="container">
+      <div class="block-heading">
+        <h2 class="text-info">Xem địa chỉ</h2>
+        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p> -->
+      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.773823300926!2d106.67584083123958!3d10.980437277598954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d1085e2b1c37%3A0x73bfa5616464d0ee!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaOG7pyBE4bqndSBN4buZdA!5e0!3m2!1svi!2s!4v1637903404139!5m2!1svi!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+</main>

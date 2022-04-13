@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:a="http://www.w3.org/1999/html">
+<meta charset="utf-8">
+<title>Chỉnh sửa bài viết</title>
+<link rel="icon" href="/images/logo.png">
+<link rel="stylesheet" href="/css/profile.css">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="/ckeditor/ckeditor.js"></script>
+<div class="container light-style flex-grow-1 container-p-y">
+
+    <form action="/updatepost/<%= post._id %>" method="post" enctype="multipart/form-data">
+        <a href="/" style="text-decoration: none;">
+            <img src="/images/logo.png" style="width: 8%">
+            <img src="/images/title.png" style="width: 30%">
+        </a>
+
+        <center>
+            <h4 class="font-weight-bold py-3 mb-4">
+                CHỈNH SỬA BÀI VIẾT
+            </h4>
+        </center>
+
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="/profileuser/<%= user._id %>">Thông tin cá nhân</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="/viewpost">Xem bài
+                            đăng</a>
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="/newpost">Đăng
+                            bài
+                            viết mới</a>
+                        <% if (user.permission >= 1) { %>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="/admin/list-post">Duyệt bài</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="/admin/member">Quản lí thành viên</a>
+                        <% } %> 
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">Tiêu đề bài đăng</label>
+                                        <input type="text" class="form-control" name="title" value="<%- post.title %>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Mô tả</label>
+                                        <textarea class="form-control" rows="5" name="description" value="<%- post.description %>"></textarea>
+                                        <script>CKEDITOR.replace('description');</script>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputState">Huyện/Thị xã</label>
+                                        <select id="inputState" class="form-control" name="district" value="<%- post.district %>">
+                                            <option>Thủ Dầu Một</option>
+                                            <option>Tân Uyên</option>
+                                            <option>Thuận An</option>
+                                            <option>Dĩ An</option>
+                                            <option>Bến Cát</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputState">Phường/xã</label>
+                                        <select id="inputState" class="form-control" name="wards" value="<%- post.wards %>">
+                                            <option>Chánh Mỹ</option>
+                                            <option>Chánh Nghĩa</option>
+                                            <option>Định Hoà</option>
+                                            <option>Hiệp An</option>
+                                            <option>Hiệp Thành</option>
+                                            <option>Hoà Phú</option>
+                                            <option>Phú Cường</option>
+                                            <option>Phú Lợi</option>
+                                            <option>Phú Hoà</option>
+                                            <option>Phú Mỹ</option>
+                                            <option>Phú Tân</option>
+                                            <option>Phú Thọ</option>
+                                            <option>Tân An</option>
+                                            <option>Tương Bình Hiệp</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Địa chỉ</label>
+                                        <input type="text" class="form-control" placeholder="Số nhà, tên đường"
+                                            name="streetname" value="" value="<%- post.streetname %>">
+                                    </div>
+
+                                    <div class="row" style="padding-left: 15px">
+                                        <div class="column">
+                                            <div class="form-group">
+                                                <label class="form-label">Giá tiền</label>
+                                                <input type="number" value="<%- post.cost %>" style="text-align: right; width: 170px;" class="form-control" name="cost" placeholder="0">
+                                            </div>
+                                        </div>
+                                        <div class="column" style="padding-left: 25px">
+                                            <div class="form-group">
+                                                <label class="form-label">Giá điện</label>
+                                                <input type="number" value="<%- post.electric %>" style="text-align: right; width: 170px;" class="form-control" name="electric" placeholder="0">
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <div class="form-group" style="padding-left: 25px">
+                                                <label class="form-label">Giá nước</label>
+                                                <input type="number" value="<%- post.water %>" style="text-align: right; width: 170px;" class="form-control" name="water" placeholder="0">
+                                            </div>
+                                        </div>
+                                        <div class="column">
+                                            <div class="form-group" style="padding-left: 25px">
+                                                <label class="form-label">Diện tích</label>
+                                                <input type="number" value="<%- post.area %>" style="text-align: right; width: 170px;" class="form-control" name="area" placeholder="0">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label for="inputState">Loại phòng</label>
+                                        <select id="inputState" class="form-control" name="roomtype" value="<%- post.roomtype %>">
+                                            <option>Ở ghép</option>
+                                            <option>1 người</option>
+                                            <option>Kiot</option>
+                                            <option>Nhà nguyên căn</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Tiện ích</label>
+                                        <input type="text" class="form-control" name="ultilities" value="<%- post.ultilities %>">
+                                    </div>
+
+                                    <img src="uploads/<%= post.uploadImage %>">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Hình ảnh</label>
+                                        <input type="file" class="form-control-file" name="Image" multiple="multiple">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="text-right mt-3" style="padding-bottom: 10px">
+        <button type="submit" class="btn btn-primary">Cập nhật</button>&nbsp;
+            <a href="/"><button type="button" class="btn btn-default">Thoát</button></a>
+        </div>
+    </form>
+</div>
+
+</html>

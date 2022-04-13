@@ -1,0 +1,74 @@
+<% var page_name; %>
+<% if (page_name == "404") { %>
+    <% include layouts/404.ejs%>
+<% } else if (page_name == "payment-error") { %>
+    <% include layouts/payment-error.ejs%>
+<% } else { %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title><%= title %> - Motel</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="shortcut icon" type="image/png" href="/img/icons/logo.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+        <% if (page_name == 'index') { %> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><% } %>  
+    
+    <% if (page_name == 'motel') { %> 
+        <link rel="stylesheet" href="/css/main.css">   
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/motel/fontawesome.css"> 
+        <link rel="stylesheet" href="/css/motel/owl.css"> 
+        <% } %>  
+    <% if (page_name == 'intropay') { %> <link rel="stylesheet" href="/css/nicepage.css"> <link rel="stylesheet" href="/css/intropayhome.css"> <% } %>  
+    <% if (page_name == 'qlbaidang' || page_name == 'qlthanhvien' || page_name == 'xemphanhoi' || page_name == 'addmember'|| page_name == 'reviewphanhoi' || page_name == 'vipinfo' 
+    || page_name == 'thongke' || page_name == 'viewvipinfo' || page_name == 'viewprofile' || page_name == 'listroom' ) { %>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+        <link rel="stylesheet" href="/bootstrap/templatemo-style.css">
+        <link rel="stylesheet" href="/css/profile.css">
+    <% } %>
+    <% if (page_name == 'profile') { %> <link rel="stylesheet" href="/css/profile.css"> <% } %>  
+    <% if (page_name == 'contact') { %> 
+        <link rel="stylesheet" href="/css/contact.css">     
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><% } %>  
+
+    <% if (page_name == 'roominfo' ) { %>
+        <link rel="stylesheet" href="/css/owner/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/owner/fontawesome.min.css" />
+        <link rel="stylesheet" href="/css/owner/templatemo-style.css" />
+      <% } %>
+</head>
+
+<body>
+
+    <% include layouts/navbar.ejs%>
+
+    <% if (page_name == 'qlbaidang' || page_name == 'qlthanhvien' || page_name == 'xemphanhoi' || page_name == 'reviewphanhoi' || page_name == 'addmember' || page_name == 'thongke') { %> 
+        <% include layouts/dashboardadmin.ejs %> 
+    <% } %>  
+
+    <% if (page_name == 'listroom' || page_name == 'vipinfo' || page_name == 'addnewroom') { %> 
+        <% include layouts/dashboardowner.ejs %> 
+    <% } %> 
+
+    <%- body %>
+
+    <% include layouts/footer.ejs%>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+                <script src="/js/script.min.js"></script>
+</body>
+
+</html>
+<% } %>  

@@ -1,0 +1,67 @@
+<main class="page replycontact-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="wrapper">
+                            <div class="row no-gutters">
+                                <div class="col-md-7">
+                                    <div class="contact-wrap w-100 p-md-5 p-4">
+                                        <h3 class="mb-4">Trả Lời Phản Hồi</h3>
+                                        <form action="/admin/xemphanhoi/1" method="post" >
+                                            <div class="row">
+
+                                                
+                                                <div class="col-md-12">
+                                                    <% if (messages) { %>
+                                                        <p style="color: red; font-size: 15px;"> <%= messages %> </p>
+                                                    <% } %> 
+                                                    <% if (success) { %>
+                                                        <p style="color: green; font-size: 15px;"> <%= success %> </p>
+                                                    <% } %> 
+                                                    <div class="form-group">
+                                                        <label class="label" style="font-size: 16px;" for="subject">Tiêu đề</label>
+                                                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Nhập tiêu đề">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label"style="font-size: 16px;"  for="#">Nội dung</label>
+                                                        <textarea name="message" class="form-control" id="
+                                                        " cols="30" rows="4" placeholder="Nhập câu trả lời"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-login" type="submit">Gửi câu trả lời</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 d-flex align-items-stretch">
+                                    <div class="info-wrap w-100 p-5 img" style="background-image: url(/img/motelroom/phong14.jpg);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
+    </div>
+    </section>
+</main>
+

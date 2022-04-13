@@ -1,0 +1,167 @@
+  </style>
+<main class="page listroom-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+
+          <div class="s009" id="timtheotukhoa">
+  <form action="/owner/listroom/1" method="get">
+    <div class="inner-form">
+      <div class="advance-search">
+        <span class="desc">Tìm theo từ khóa</span>
+        <div class="group-btn" style="display: flex;">
+          <input
+            id="keyword"
+            name="keyword"
+            type="text"
+            style="background-color: white; color: black; border: solid 1px black; width: 300px; height: 30px;"
+            class="form-control validate"
+            placeholder="Nhập từ khóa tìm kiếm"
+          />
+
+          <button class="btn-search" style="margin-left: 10px; color: white; background-color:  rgb(13, 122, 196); width: 120px; height: 40px; border: none; border-radius: 10px;">Tìm</button>
+        </div>
+        <% if (keyword) { %>
+          <p style="padding-top: 10px">
+            Kết quả tìm kiếm cho từ khóa: <%= keyword%></p>
+          <% } %>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="container mt-5"  style="padding-top: 0px;">
+  
+     <!-- pagination -->
+  <div class="row" style="align-content: center; margin-top: opx;">
+    <!-- hiển thị phân trang nếu có trang -->
+    <% if(pages > 0) { %>
+    <nav class="mx-auto">
+      <ul class="pagination" style="margin-top: 2rem;">
+      
+        <!-- FIRST ITEM -->  
+        <% if(current == 1) { %> 
+       <!-- Nếu thông số http://localhost:3333/news/1/ là 1 thì First sẽ bị disabled -->
+            <li class="page-item disabled">
+              <a class="page-link" href="/">Trang đầu</a>
+            </li>
+        <% } else { %>
+         <!-- Nếu thông số http://localhost:3333/news/2/ từ 2 trở lên thì First sẽ bỏ disabled -->
+            <li class="page-item">
+              <a class="page-link" href="/owner/listroom/1">Trang đầu</a>
+            </li>
+        <% } %>
+        
+        <!-- ITEMS  -->
+        <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %> 
+   <!-- Toán tử điều kiện 3 ngôi syntax: < điều_kiện ? giá_trị_1 : giá_trị_2 > -->
+  <!-- Nếu điều_kiện trả về true, toán tử có giá trị giá_trị_1. Ngược lại toán tử có giá trị giá_trị_2. -->
+        <% if(i !== 1) { %>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+        <% } %>
+        <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
+         <!-- Sử dụng vòng lặp để lặp qua từng trang và tăng số trang  -->
+         <!-- Trong vòng lặp for có ba biểu thức tùy chọn nên chỉ cần các bạn tách mỗi biểu thức bằng dấu `;` là oke rồi -->
+          <% if(i == current) { %>
+            <li class="page-item active">
+              <a class="page-link" href="/owner/listroom/<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+        <% } else { %>
+            <li class="page-item">
+              <a class="page-link" href="/owner/listroom/<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+        <% } %>
+        <% if (i == Number(current) + 2 && i < pages) { %>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+        <% } %>
+        <% } %>
+        
+        <!-- LAST ITEM -->
+        <% if(current == pages) { %> 
+        <!-- Nếu số current( chỉ số phân trang ) là 6 và tổng số page là 6 thì Last bị disabled -->
+            <li class="page-item disabled">
+              <a class="page-link" href="#">
+                Trang cuối
+              </a>
+            </li>
+        <% } else { %>
+            <!-- Ngược lại, thì Last là trang cuối cùng pages ở đây là 6 đồng nghĩa với Last là trang số 6 -->
+            <li class="page-item">
+              <a class="page-link" href="/owner/listroom/<%= pages %>">
+                Trang cuối
+              </a>
+            </li>
+        <% } %>
+      </ul>
+    </nav>
+    <% } %>
+  </div>
+        <!-- table container -->
+<div class="tm-content-row">
+    <div class="col-sm-12">
+
+        <div class="tm-product-table-container">
+        <table class="table table-hover tm-table-small tm-product-table">
+            <thead>
+            <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Tiêu đề</th>
+                <th scope="col">Giá phòng</th>
+                <th scope="col">Điện</th>
+                <th scope="col">Nước</th>
+                <th scope="col">Loại phòng</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+                <% for(var i = 0; i < listroom.length; i++) { %> 
+            <tr>
+            
+                <th scope="row"><input type="checkbox" /></th>
+                <td class="tm-product-name"><%= listroom[i].title %></td>
+                <td><%= listroom[i].cost %></td>
+                <td><%= listroom[i].electric %></td>
+                <td><%= listroom[i].water %></td>
+                <td><%= listroom[i].roomType %></td>
+                <td><% if (listroom[i].status == 0) { %> Đang chờ duyệt <% } 
+                  else if (listroom[i].status == 1) { %><p style="color: rgb(98, 255, 151);">✔ Đã duyệt</p> <% } 
+                  else if (listroom[i].status == 2) { %> <p style="color: rgb(209, 117, 117);">⚠ Bài đăng này chứa nội dung không hợp lệ, cần kiểm tra lại</p><% } 
+                  else { %> Đã bị ban <% } %>   
+                    
+                      </td>
+                <td>
+                    <button class="btn-delete" onclick="return confirm('Bạn muốn xóa bài này khum?');"><a href="/owner/delete-room/<%= listroom[i]._id %>" style="text-decoration: none; color: white;">Xóa</a</button>
+                </td>
+                <td>
+                    <button class="btn-view"><a href="/owner/editroom/<%= listroom[i]._id %>" style="text-decoration: none; color: rgb(0, 0, 0);">Xem</a></button>
+                </td>
+                
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+        </div>
+      
+        <a
+        href="/owner/addnewroom"
+        class="btn btn-primary btn-block text-uppercase mb-3">Thêm phòng mới</a>
+        <!-- <button class="btn btn-primary btn-block text-uppercase">
+        Delete selected products
+        </button> -->
+
+    
+    </div>
+    
+</div>
+</div>
+</div>
+</section>
+</main>

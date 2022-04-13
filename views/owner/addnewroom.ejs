@@ -1,0 +1,184 @@
+<main class="page addnewroom-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            
+<div class="container tm-mt-big tm-mb-big">
+    
+    <div class="row">
+    <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <div class="row">
+            <div class="col-12">
+            <h2 class="tm-block-title d-inline-block">Thêm Phòng Mới</h2>
+            </div>
+        </div>
+        <div class="row tm-edit-product-row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+            <form method="post" enctype="multipart/form-data" class="tm-edit-product-form">
+                <div class="form-group mb-3">
+                    <% if (messages) { %>
+                        <p style="color: red; font-size: 15px;"> <%= messages %> </p>
+                    <% } %> 
+                <label
+                    for="name"
+                    >Tiêu đề
+                </label>
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    class="form-control validate"
+                />
+                </div>
+                <div class="form-group mb-3">
+                <label
+                    for="description"
+                    >Mô tả</label
+                >
+                <textarea
+                    class="form-control validate"
+                    rows="3"
+                    id="description"
+                    name="description"
+                ></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label
+                        for="name"
+                        >Địa chỉ (số, đường phố)
+                    </label>
+                    <input
+                        id="streetName"
+                        name="streetName"
+                        type="text"
+                        class="form-control validate"
+                    />
+                    </div>
+                <div class="form-group mb-3">
+                <label
+                    for="category"
+                    >Khu vực</label
+                >
+                <select
+                    class="custom-select tm-select-accounts"
+                    id="wards"
+                    name="wards"
+                >
+                    <option selected>Lựa chọn phường</option>
+                    <option value="Phú Hòa">Phú Hòa</option>
+                    <option value="Phú Lợi">Phú Lợi</option>
+                    <option value="Phú Thọ">Phú Thọ</option>
+                    <option value="Phú Mỹ">Phú Mỹ</option>
+                    <option value="Phú Cường">Phú Cường</option>
+                    <option value="Hiệp Thành">Hiệp Thành</option>
+                    <option value="Tương Bình Hiệp">Tương Bình Hiệp</option>
+                    <option value="Phú Tân">Phú Tân</option>
+                    <option value="Hòa Phú">Hòa Phú</option>
+                    <option value="Hiệp An">Hiệp An</option>
+                    <option value="Chánh Mỹ">Chánh Mỹ</option>
+                    <option value="Tân An">Tân An</option>
+                    <option value="Định Hòa">Định Hòa</option>
+                    <option value="Chánh Nghĩa">Chánh Nghĩa</option>
+                </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label
+                        for="name"
+                        >Giá phòng (vnđ)
+                    </label>
+                    <input
+                        id="cost"
+                        name="cost"
+                        type="text"
+                        class="form-control validate"
+                    />
+                    </div>
+                <div class="row">
+                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                        <label
+                        for="expire_date"
+                        >Tiền điện (vnđ)
+                        </label>
+                        <input
+                        id="electric"
+                        name="electric"
+                        type="text"
+                        class="form-control validate"
+                        data-large-mode="true"
+                        />
+                    </div>
+                    <div class="form-group mb-3 col-xs-12 col-sm-6">
+                        <label
+                        for="stock"
+                        >Tiền nước (vnđ)
+                        </label>
+                        <input
+                        id="water"
+                        name="water"
+                        type="text"
+                        class="form-control validate"
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label
+                            for="category"
+                            >Loại phòng</label
+                        >
+                        <select
+                            class="custom-select tm-select-accounts"
+                            id="roomtype"
+                            name="roomType"
+                        >
+                            <option selected>Chọn loại phòng</option>
+                            <option value="Có gác">Có gác</option>
+                            <option value="Không có gác">Không có gác</option>
+                        </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label
+                                for="description"
+                                >Ghi chú (tiện ích)</label
+                            >
+                            <textarea
+                                class="form-control validate"
+                                rows="3"
+                                id="ultilities"
+                                name="ultilities"
+                            ></textarea>
+                            </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block text-uppercase">Thêm phòng</button>
+                    </div>
+
+                    <div class="col-12" style="margin-top: 20px;">
+                        <a href="/quytac" class="btn btn-primary btn-block text-uppercase>">Xem quy tắc đăng bài</a>
+                        </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+            <div class="tm-product-img-dummy mx-auto">
+                <img class="card-img-top w-100 d-block" src="/img/icons/Pictureadd.jpg" onclick="document.getElementById('fileInput').click();">
+            </div>
+            <div class="custom-file mt-3 mb-3">
+                <div class="pl-sm-4 pl-2" id="img-section">
+                    <b>Tải ảnh lên</b>
+                    <p>Kích thước dưới 5MB thui nhen!</p>
+                    <input type="file"  class="form-control-file" name="Image" >
+                    <p style="margin-top: 15px;"><b >Thêm ảnh</b></p>
+                    <!-- <label for="file" style="color: white; height: 40px; width: 100px; background-color: steelblue; margin: auto; justify-content: center; align-items: center;">
+                        Tải ảnh lên
+                    </label> -->
+                  </div>
+            </div>
+            
+            </div>
+            
+        </form>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+</section>
+</main>

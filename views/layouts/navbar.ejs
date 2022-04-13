@@ -1,0 +1,46 @@
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container">
+        <img src="/img/icons/logo2.png" >
+        <a class="navbar-brand logo" href="/">TDMU Motel</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link <% if (page_name == " index ") { %> active <% } %>" href="/">Trang Chủ</a></li>
+                <li class="nav-item"><a class="nav-link <% if (page_name == " motel ") { %> active <% } %>" href="/motel/1">Tìm Phòng</a></li>
+                <li class="nav-item"><a class="nav-link <% if (page_name == " about ") { %> active <% } %>" href="/about">Giới Thiệu</a></li>
+                <% if (locals.user) { %>
+                    <% if (user.permission == 0 || user.permission == 1  ) { %>
+                    <li class="nav-item"><a class="nav-link <% if (page_name == " contact ") { %> active <% } %>" href="/contact">Phản Hồi</a></li>
+                    <li class="nav-item">
+                    <div class="dropdown"><a class="dropdown-toggle" style="text-decoration:none ;" aria-expanded="false" data-bs-toggle="dropdown" href="#">Xin chào, <%= user.name %>!</a>
+                        <div class="dropdown-menu"><% if (user.permission == 1) { %> 
+                            <a class="dropdown-item" href="/vipinfo/1" style="color: crimson;">VIP</a> <a class="dropdown-item" href="/owner/listroom/1">Quản lý phòng trọ</a> <% } %>
+                            <% if (user.permission == 0) { %> 
+                                <% if (user.money > 0) { %> <a class="dropdown-item" href="/vipinfo/1" style="color: crimson;">VIP</a> <% } %> <a class="dropdown-item" href="/Payment/upgrade-account">Nâng cấp lên tài khoản chủ trọ</a> <% } %>  
+                            <a class="dropdown-item" href="/profile">Thông tin cá nhân</a> <a class="dropdown-item" href="/change-password">Đổi mật khẩu</a><a class="dropdown-item" href="/logout">Đăng xuất</a></div>
+                    </div>
+                    </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <div class="dropdown"><a class="dropdown-toggle" style="text-decoration:none ;" aria-expanded="false" data-bs-toggle="dropdown" href="#">Xin chào, <%= user.name %>!</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/profile">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="/admin/qlbaidang/1">Quản lý bài đăng</a>
+                                    <a class="dropdown-item" href="/admin/qlthanhvien/1">Quản lý thành viên</a>
+                                    <a class="dropdown-item" href="/admin/xemphanhoi/1">Xem phản hồi</a>
+                                    <a class="dropdown-item" href="/logout">Đăng xuất</a>
+                                </div>
+                            </div>
+                            </li>
+                
+                    <% } %>
+                <% } else { %>
+                    <li class="nav-item"><button class="btn-navbarlogin" ><a style="color: white;" class="nav-link <% if (page_name == " login ") { %> active <% } %>" href="/login">Đăng nhập</a></button></li>
+                    <li class="nav-item"><button class="btn-navbarsignup" ><a style="color: #0d6efd; text-decoration: none;" class="nav-link <% if (page_name == " register ") { %> active <% } %>" href="/register">Đăng ký</a></button></li>
+                <% } %>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+

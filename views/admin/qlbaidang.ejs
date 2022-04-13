@@ -1,0 +1,155 @@
+<main class="page manager-page" >
+    <section class="clean-block about-us">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Quản lý bài đăng</h2>
+            </div>
+
+
+            <div class="container-center ">
+              <div class="s009" id="timtheotukhoa">
+                <form action="/admin/qlbaidang/1" method="get">
+                  <div class="inner-form">
+                    <div class="advance-search">
+                      <span class="desc">Tìm theo từ khóa</span>
+                      <div class="group-btn" style="display: flex;">
+                        <input
+                          id="keyword"
+                          name="keyword"
+                          type="text"
+                          style="background-color: white; color: black; border: solid 1px black; width: 300px; height: 30px;"
+                          class="form-control validate"
+                          placeholder="Nhập từ khóa tìm kiếm"
+                        />
+              
+                        <button class="btn-search" style="margin-left: 10px; color: white; background-color:  rgb(13, 122, 196); width: 120px; height: 40px; border: none; border-radius: 10px;">Tìm</button>
+                      </div>
+                      <% if (keyword) { %>
+                        <p style="padding-top: 10px">
+                          Kết quả tìm kiếm cho từ khóa: <%= keyword%></p>
+                        <% } %>
+                    </div>
+                  </div>
+                </form>
+              </div>
+ <!-- pagination -->
+ <div class="row" style="align-content: center;">
+    <!-- hiển thị phân trang nếu có trang -->
+    <% if(pages > 0) { %>
+    <nav class="mx-auto">
+      <ul class="pagination" style="margin-top: 2rem;">
+      
+        <!-- FIRST ITEM -->  
+        <% if(current == 1) { %> 
+       <!-- Nếu thông số http://localhost:3333/news/1/ là 1 thì First sẽ bị disabled -->
+            <li class="page-item disabled">
+              <a class="page-link" href="/">Trang đầu</a>
+            </li>
+        <% } else { %>
+         <!-- Nếu thông số http://localhost:3333/news/2/ từ 2 trở lên thì First sẽ bỏ disabled -->
+            <li class="page-item">
+              <a class="page-link" href="/admin/qlbaidang/1">Trang đầu</a>
+            </li>
+        <% } %>
+        
+        <!-- ITEMS  -->
+        <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %> 
+   <!-- Toán tử điều kiện 3 ngôi syntax: < điều_kiện ? giá_trị_1 : giá_trị_2 > -->
+  <!-- Nếu điều_kiện trả về true, toán tử có giá trị giá_trị_1. Ngược lại toán tử có giá trị giá_trị_2. -->
+        <% if(i !== 1) { %>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+        <% } %>
+        <% for(; i <= (Number(current) + 2) && i <= pages; i++) { %>
+         <!-- Sử dụng vòng lặp để lặp qua từng trang và tăng số trang  -->
+         <!-- Trong vòng lặp for có ba biểu thức tùy chọn nên chỉ cần các bạn tách mỗi biểu thức bằng dấu `;` là oke rồi -->
+          <% if(i == current) { %>
+            <li class="page-item active">
+              <a class="page-link" href="/admin/qlbaidang/<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+        <% } else { %>
+            <li class="page-item">
+              <a class="page-link" href="/admin/qlbaidang/<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+        <% } %>
+        <% if (i == Number(current) + 2 && i < pages) { %>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">...</a>
+            </li>
+        <% } %>
+        <% } %>
+        
+        <!-- LAST ITEM -->
+        <% if(current == pages) { %> 
+        <!-- Nếu số current( chỉ số phân trang ) là 6 và tổng số page là 6 thì Last bị disabled -->
+            <li class="page-item disabled">
+              <a class="page-link" href="#">
+                Trang cuối
+              </a>
+            </li>
+        <% } else { %>
+            <!-- Ngược lại, thì Last là trang cuối cùng pages ở đây là 6 đồng nghĩa với Last là trang số 6 -->
+            <li class="page-item">
+              <a class="page-link" href="/admin/qlbaidang/<%= pages %>">
+                Trang cuối
+              </a>
+            </li>
+        <% } %>
+      </ul>
+    </nav>
+    <% } %>
+  </div>
+
+                <div class="tm-product-table-container">
+                    <table class="table table-hover tm-table-small tm-product-table">
+                        <thead>
+                            <tr>
+
+                                <th scope="col" class="header">TIÊU ĐỀ</th>
+                                <th scope="col" class="header">MÔ TẢ</th>
+                                <th scope="col" class="header">KHU VỰC</th>
+                                <th scope="col" class="header">GIÁ TIỀN</th>
+                                <th scope="col" class="header">TRẠNG THÁI</th>
+                                <th scope="col" class="header">&nbsp;</th>
+                                <th scope="col" class="header">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i = 0; i < listroom.length; i++) { %> 
+                            <tr>
+
+                                <td class="tm-product-name"><a href="/admin/viewroom/<%= listroom[i]._id %>" style="text-decoration: none; color: white;"><%= listroom[i].title %></a></td>
+                                <td style=" white-space: nowrap; max-width: 350px; text-overflow: ellipsis; overflow: hidden;"><%= listroom[i].description %></td>
+                                <td><%= listroom[i].wards %></td>
+                                <td><%= listroom[i].cost %></td>
+                                <td><% if (listroom[i].status == 0) { %> Đang chờ duyệt <% } 
+                                  else if (listroom[i].status == 1) { %><p style="color: rgb(98, 255, 151);">✔ Đã duyệt</p> <% } 
+                                  else if (listroom[i].status == 2) { %><p style="color: rgb(209, 117, 117);">⚠ Spam </p> <% } 
+                                  else { %><p style="color: rgb(0, 0, 0);">⊘ Đã bị ban </p> <% } %> 
+                                <td>
+                                    <a href="/admin/accept-room/<%= listroom[i]._id %>" class="tm-product-delete-link" onclick="return confirm('Bạn muốn duyệt bài này khum?');">             
+                                            <i class="fas fa-check-circle"></i>
+                                    </a>
+                                </td>
+                                <td >
+                                    <a href="/admin/delete-room/<%= listroom[i]._id %>" class="tm-product-delete-link" onclick="return confirm('Bạn muốn xóa bài này khum?');">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+    </section>
+
+</main>

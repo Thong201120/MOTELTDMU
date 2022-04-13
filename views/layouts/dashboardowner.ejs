@@ -1,0 +1,23 @@
+<!-- bootstrap/css/bootstrap.min.css -->
+<div class="option" style="position: relative; margin-top: 60px;">
+    <div class="option-btn">
+        <% if (page_name == 'vipinfo') { %> 
+            <button class="btn-itemed"><a class="link" style="text-decoration: none; color: white;" href ="/vipinfo/1">VIP</a></button>    
+        <% } else { %>  
+            <button class="btn-item"><a class="link" style="text-decoration: none; color: white;" href ="/vipinfo/1">VIP</a></button>    
+        <% } %>
+
+        <% if (page_name == 'listroom') { %> 
+            <button class="btn-itemed"><a class="link" style="text-decoration: none; color: white;" href ="/owner/listroom/1">Q.lý phòng</a></button>
+        <% } else { %>  
+            <button class="btn-item"><a class="link" style="text-decoration: none; color: white;" href ="/owner/listroom/1">Q.lý phòng</a></button>
+        <% } %>
+        
+        <% if (page_name == 'addnewroom') { %> 
+            <button class="btn-itemed"><a class="link" href ="/owner/addnewroom" style="text-decoration: none; color: white;">Thêm phòng</a></button>
+        <% } else { %>  
+            <button class="btn-item"><a class="link" href ="/owner/addnewroom" style="text-decoration: none; color: white;">Thêm phòng</a></button>
+        <% } %>
+        
+    </div>
+</div>
